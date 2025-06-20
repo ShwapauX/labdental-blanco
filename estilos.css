@@ -1,0 +1,443 @@
+body{
+  font-family: 'Quicksand';
+  margin: 0;
+  padding: 0;
+}
+p{
+  font-size: 20px;
+}
+li{
+  list-style: none;
+  margin-right: 30px;
+
+}
+.primer-elemento{
+  color: white;
+font-size: 20px;
+}
+.menu p{
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ul{
+  display: flex;
+  justify-content: space-between;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.central-elemento{
+  text-align: center;
+  margin-top: 300px;
+  color: white;
+}
+h1{
+  font-size: 60px;
+  margin: 0;
+}
+h2{
+  font-size: 30px;
+  margin-bottom: 50px;
+}
+a{
+  font-size: 20px;
+  background: #1CD1F9;
+  padding: 30px 20px 30px 20px;
+}
+header{
+  background-image: url(images/Lanna.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+.contenedor{
+  max-width: 1280px;
+  width: 90%;
+  margin: auto;
+}
+/*Sobre nosotros*/
+h3{
+  text-align: center;
+  font-size: 50px;
+  font-weight: normal;
+}
+.contenedor-SobreNosotros{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Contenedor-Nosotros-Boton{
+width: 42%;
+}
+.Contenedor-Nosotros-Boton p{
+font-size: 18px;
+}
+.Contenedor-Nosotros-Boton a{
+margin-top: 20px;
+display: inline-block;
+}
+/*Servicios*/
+.contenedor-servicio{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.servicio{
+  width: 25%;
+  padding: 40px 20px 40px 20px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+.hueso{
+  background: #f8fee7;
+}
+.esmalte{
+  background: #f4ffd6 ;
+}
+.picado{
+  background: #f0ffc6 ;
+}
+.servicio h4{
+  font-size: 30px;
+  margin: 0;
+}
+.servicio img{
+  float: right;
+  height: inherit;
+}
+.servicio p{
+  font-size: 18px;
+}
+/*imagenes*/
+span{
+  font-size: 80px;
+  color: gray;
+}
+.owl-nav{
+  text-align: center;
+}
+/*xqtrabajar con nosotros*/
+.contenedor-why{
+display:flex;
+text-align: center;
+justify-content: space-around;
+}
+.contenedor-why h4{
+  margin: 0;
+  font-size: 20px;
+}
+.contenedor-why p{
+  font-size: 16;
+  line-height: 26px;
+}
+.why-sing{
+  width: 30%;
+}
+#blog{
+  background: #f9fafc;
+  padding-top: 50px;
+  width: 90%;
+  padding-bottom: 50px;
+}
+.contenedor-publi{
+  display: flex;
+  justify-content: space-around;
+}
+.publi{
+  width: 30%;
+  box-shadow: 1px 1px 14px #ccc;
+  padding-bottom: 20px;
+}
+#blog img{
+  width: 90%;
+}
+#blog h4{
+  font-size: 23px;
+  margin: 0;
+  padding: 20px;
+}
+#blog p{
+  font-size: 16px;
+  line-height: 24px;
+  padding: 18px;
+  line-height: 10px 20px 20px 20px !important;
+  margin: 0;
+}
+#blog a{
+  display: inline-block;
+  margin-left: 20px;
+}
+/*.publi-2 img{
+  height: 245px;
+}*/
+/*xqtrabajar con nosotros*/
+#what-whait{
+  background: linear-gradient(rgba(195, 255, 253,.94),rgba( 195, 255, 231 ,.9));
+  text-align: center;
+  padding: 50px 0 50px 0;
+}
+#what-whait h3{
+  font-size: 23px;
+  margin-bottom: 80px;
+}
+#what-whait a{
+  padding: 17px 45px 17px 45px;
+  transition: 2s;
+}
+#what-whait a:hover{
+  color: yellow;
+  transition: 2s;
+  transform:scale(1);
+  display: inline-block;
+}
+
+.botones-flotantes {
+  background: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* ← aquí defines la separación vertical */
+  z-index: 1000;
+}
+.botones-flotantes a {
+  background: none;       /* ← Sin fondo */
+  border: none;           /* ← Sin borde */
+  padding: 0;             /* ← Sin espacio alrededor */
+}
+
+.botones-flotantes img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.botones-flotantes img:hover {
+  transform: scale(1.2);
+}
+
+
+.menu-icon{
+  display: none;
+}
+#contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+#contacto input, #contacto textarea {
+  padding: 10px;
+  font-size: 16px;
+}
+#contacto button {
+  background: #1CD1F9;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+#contacto button:hover {
+  background: #00b8d4;
+}
+  /*se aplica cuando el maximo de ancho sea de 480px @media*/
+@media(max-width: 480px){
+  /* lab den cel*/
+  nav{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background:rgba(255, 255, 255,.20);
+    width: 100%;
+    top: 70px;
+    display: none;
+  }
+  nav .lista{
+    flex-direction: column;
+    display: flex;
+  }
+  .menu-icon{
+    display: block;
+    width: 50px;
+  }
+  .titular{
+    margin-top: 54px;
+  }
+  .central-elemento{
+    margin-top: 150px;
+  }
+  h1{
+    font-size: 50px;
+  }
+  h2{
+    font-size: 25px;
+  }
+  /*sobre mi cel*/
+  .contenedor-SobreNosotros{
+    flex-direction: column;
+  }
+  .Contenedor-Nosotros-Boton{
+      width: 90%;
+  }
+ /*servicio cel*/
+ .contenedor-Servicio{
+   flex-direction: column;
+ }
+ .servicio{
+   width: 90%;
+   margin: auto;
+   margin-bottom: 15px;
+ }
+ /*nuestros trabajos cel*/
+ h3{
+   font-size: 46px;
+ }
+  /*nuestros trabajos cel*/
+  .contenedor-why{
+    flex-direction: column;
+  }
+  .why-sing{
+    width:98%;
+  }
+  /*blog cel*/
+  .contenedor-publi{
+    flex-direction: column;
+  }
+  #blog{
+    width: 100%;
+  }
+  .publi{
+    width: 95%;
+    margin: auto;
+    margin-bottom: 15px;
+  }
+ .logocdb{
+   width: 90%
+ }
+ .botones-flotantes {
+    position: static;
+    margin-top: 20px;
+    flex-direction: row; /* puedes poner column si lo prefieres en vertical */
+    justify-content: center;
+  }
+}
+/*se aplica cuando el maximo de ancho sea de min 700px y max 900px @media() and ()*/
+@media (min-width:700px) and (max-width: 900px){
+/* lab den cel*/
+header{
+  height: 53vh;
+}
+nav{
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  background:rgba(255, 255, 255,.20);
+  width: 100%;
+  top: 70px;
+  display: none;
+}
+nav .lista{
+  flex-direction: column;
+  display: flex;
+}
+.menu-icon{
+  display: block;
+  width: 50px;
+}
+.titular{
+  margin-top: 54px;
+}
+.central-elemento{
+  margin-top: 150px;
+}
+h1{
+  font-size: 50px;
+}
+h2{
+  font-size: 25px;
+}
+/*sobre mi cel*/
+.contenedor-SobreNosotros{
+  flex-direction: column;
+}
+.Contenedor-Nosotros-Boton{
+    width: 90%;
+}
+/*servicio cel*/
+.contenedor-Servicio{
+ flex-direction: column;
+}
+.servicio{
+ width: 90%;
+ margin: auto;
+ margin-bottom: 15px;
+}
+/*nuestros trabajos cel*/
+h3{
+ font-size: 46px;
+}
+/*nuestros trabajos cel*/
+.contenedor-why{
+  flex-direction: column;
+}
+.why-sing{
+  width:98%;
+}
+/*blog cel*/
+.contenedor-publi{
+  flex-direction: column;
+}
+#blog{
+  width: 100%;
+}
+#blog img{
+  width: 100%;
+}
+.publi{
+  width: 75%;
+  margin: auto;
+  margin-bottom: 15px;
+}
+.logocdb{
+ width: 45%
+}
+#contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: auto;
+}
+#contacto input, #contacto textarea {
+  padding: 10px;
+  font-size: 16px;
+}
+#contacto button {
+  background: #1CD1F9;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+#contacto button:hover {
+  background: #00b8d4;
+}
+.botones-flotantes {
+    position: static;
+    margin-top: 20px;
+    flex-direction: row; /* puedes poner column si lo prefieres en vertical */
+    justify-content: center;
+  }
+}

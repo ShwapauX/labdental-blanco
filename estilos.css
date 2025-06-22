@@ -198,7 +198,7 @@ justify-content: space-around;
   transform:scale(1);
   display: inline-block;
 }
-
+/*botones flotantes*/
 .botones-flotantes {
   background: none;
   position: fixed;
@@ -251,6 +251,39 @@ justify-content: space-around;
 #contacto button:hover {
   background: #00b8d4;
 }
+/*formulario*/
+#cotizacion form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  gap: 15px;
+}
+
+#cotizacion input,
+#cotizacion select,
+#cotizacion textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#cotizacion button {
+  background-color: #1CD1F9;
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#cotizacion button:hover {
+  background-color: #00b8d4;
+}
+
+
   /*se aplica cuando el maximo de ancho sea de 480px @media*/
 @media(max-width: 480px){
   /* lab den cel*/

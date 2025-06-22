@@ -270,7 +270,7 @@ justify-content: space-around;
 }
 
 #cotizacion button {
-  background-color: #1CD1F9;
+  background-color: #1cf92e;
   color: white;
   padding: 12px;
   font-size: 18px;
@@ -280,7 +280,7 @@ justify-content: space-around;
 }
 
 #cotizacion button:hover {
-  background-color: #00b8d4;
+  background-color: #78d400;
 }
 
 

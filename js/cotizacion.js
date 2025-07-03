@@ -38,7 +38,26 @@ Mi número de WhatsApp es: ${telefono}`;
   // Abrimos esa URL en una nueva pestaña del navegador
   window.open(url, "_blank");
   // Reiniciamos el formulario después del envío
-  document.getElementById("formCotizacion").reset();
+  document.getElementById("formCotizacion").reset(); 
+// Enviar a Google Sheets
+  fetch("https://script.google.com/macros/s/AKfycbxyKnyqCUOGr0xftn06mlwxUvslHfLULwLBKBFuxDGHoqbFt1IUxuqQZKuNUXGXQ2VtuA/exec", {
+    method: "POST",
+    body: JSON.stringify({ nombre, servicio, detalles, fecha, telefono }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "OK") {
+      window.open(whatsappURL, "_blank"); // abre WhatsApp
+      document.getElementById("formCotizacion").reset(); // limpia
+    } else {
+      alert("Hubo un problema al guardar los datos.");
+    }
+  })
+  .catch(err => {
+    console.error("Error:", err);
+    alert("No se pudo enviar. Inténtalo más tarde.");
+  });
 });
-
-

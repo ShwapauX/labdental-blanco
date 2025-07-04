@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para guardar en Google Sheets (opcional)
     function guardarEnGoogleSheets(datos) {
         // Reemplaza con tu URL de Apps Script
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbyI1vol0V8ZMwaD2GUde7bXLLv5SpzrqbPoYTR6JmE23tTeJPiVw6MLGt07GigLv3xuYw/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwz-GXI8oRH1FKD5DKjTxwEHf6LcPNZ_K5RYFAtZ0YvOJ580m41O9CPKBpNyGgDAHoC/exec';
         
         fetch(scriptUrl, {
             method: 'POST',

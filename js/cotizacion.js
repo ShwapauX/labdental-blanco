@@ -1,63 +1,51 @@
-// Esperamos a que se envíe el formulario con id "formCotizacion"
 document.getElementById("formCotizacion").addEventListener("submit", function (e) {
-  
-  // Evita que la página se recargue automáticamente al enviar el formulario
   e.preventDefault();
 
-  // Obtenemos los valores escritos por el usuario en cada campo del formulario
-  const nombre = document.getElementById("nombre").value.trim();         // Nombre completo
-  const servicio = document.getElementById("servicio").value.trim();     // Tipo de servicio elegido
-  const detalles = document.getElementById("detalles").value.trim();     // Descripción de necesidades
-  const fecha = document.getElementById("fecha").value.trim();           // Fecha estimada
-  const telefono = document.getElementById("telefono").value.trim();     // Teléfono de contacto
+  const nombre = document.getElementById("nombre").value.trim();
+  const servicio = document.getElementById("servicio").value.trim();
+  const detalles = document.getElementById("detalles").value.trim();
+  const fecha = document.getElementById("fecha").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
 
-  // Validamos que ninguno esté vacío
   if (!nombre || !servicio || !detalles || !fecha || !telefono) {
-    alert("Por favor, completa todos los campos del formulario.");
-    return; // detenemos el proceso si falta algo
-  }
-
-  // Validación básica del número de WhatsApp (debe tener al menos 10 dígitos)
-  if (!/^\d{10,15}$/.test(telefono)) {
-    alert("Ingresa un número de WhatsApp válido (solo números, sin espacios ni símbolos).");
+    alert("Por favor completa todos los campos.");
     return;
   }
 
-  // Creamos un mensaje que vamos a enviar por WhatsApp
-  const mensaje = `Hola, soy ${nombre}. Deseo una cotización para: ${servicio}.
+  // Enviar a Google Sheets
+  fetch("https://script.google.com/macros/s/AKfycbyI1vol0V8ZMwaD2GUde7bXLLv5SpzrqbPoYTR6JmE23tTeJPiVw6MLGt07GigLv3xuYw/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nombre,
+      servicio,
+      detalles,
+      fecha,
+      telefono
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === "OK") {
+      alert("¡Cotización enviada y registrada!");
+      document.getElementById("formCotizacion").reset();
+
+      // Abrir WhatsApp automáticamente
+      const mensaje = `Hola, soy ${nombre}. Deseo una cotización para: ${servicio}.
 Mis necesidades son: ${detalles}
 Fecha estimada de recolección: ${fecha}
 Mi número de WhatsApp es: ${telefono}`;
-
-  // Número de WhatsApp del laboratorio
-  const numeroWhatsApp = "525538771192";
-
-  // Creamos una URL para abrir WhatsApp con el mensaje precargado
-  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-  // Abrimos esa URL en una nueva pestaña del navegador
-  window.open(url, "_blank");
-  // Reiniciamos el formulario después del envío
-  document.getElementById("formCotizacion").reset(); 
-// Enviar a Google Sheets
-  fetch("https://script.google.com/macros/s/AKfycbxyKnyqCUOGr0xftn06mlwxUvslHfLULwLBKBFuxDGHoqbFt1IUxuqQZKuNUXGXQ2VtuA/exec", {
-    method: "POST",
-    body: JSON.stringify({ nombre, servicio, detalles, fecha, telefono }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "OK") {
-      window.open(whatsappURL, "_blank"); // abre WhatsApp
-      document.getElementById("formCotizacion").reset(); // limpia
+      const whatsappURL = `https://wa.me/525538771192?text=${encodeURIComponent(mensaje)}`;
+      window.open(whatsappURL, "_blank");
     } else {
-      alert("Hubo un problema al guardar los datos.");
+      alert("Hubo un error al guardar los datos.");
     }
   })
-  .catch(err => {
-    console.error("Error:", err);
-    alert("No se pudo enviar. Inténtalo más tarde.");
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Error al enviar la cotización.");
   });
 });
+

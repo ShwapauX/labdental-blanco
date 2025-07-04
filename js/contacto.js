@@ -10,7 +10,7 @@
     return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbxCtFO1a7UkMyEV2OW7k4s7eRFA7ZsIzy03ZO-I3CGALKfK0shyt4Y2jzlrpGhwQEdQ/exec", {
+    fetch("https://script.google.com/macros/library/d/1tLMc5N0s5-pDH3EP6zsk-gLzvjNiKqiJeUk4xxDoMMNhrtEdVLo4y8Jg/1", {
     method: "POST",
     body: JSON.stringify({ nombre, email, mensaje }),
     headers: {

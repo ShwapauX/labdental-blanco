@@ -1,4 +1,4 @@
-/*document.getElementById("formCotizacion").addEventListener("submit", function (e) {
+document.getElementById("formCotizacion").addEventListener("submit", function (e) {
   e.preventDefault(); // Previene que la página recargue
 
   // Capturamos valores del formulario
@@ -49,60 +49,4 @@ Mi número de WhatsApp es: ${telefono}`;
     console.error("Error al enviar:", err);
     alert("No se pudo enviar tu solicitud. Intenta más tarde.");
   });
-});*/
-
-document.addEventListener('DOMContentLoaded', function() {
-    const formulario = document.getElementById('formCotizacion');
-    
-    formulario.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Obtener los valores del formulario
-        const nombre = document.getElementById('nombre').value;
-        const servicio = document.getElementById('servicio').value;
-        const detalles = document.getElementById('detalles').value;
-        const fecha = document.getElementById('fecha').value;
-        const telefono = document.getElementById('telefono').value;
-        
-        // Validar los campos
-        if (!nombre || !servicio || !detalles || !fecha || !telefono) {
-            alert('Por favor completa todos los campos');
-            return;
-        }
-        
-        // Formatear el mensaje para WhatsApp
-        const mensajeWhatsApp = `Hola, soy ${nombre} y estoy interesado en el servicio de ${servicio}. 
-        Detalles: ${detalles}
-        Fecha deseada para recolección: ${fecha}
-        Mi WhatsApp: ${telefono}`;
-        
-        // Codificar el mensaje para URL
-        const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
-        
-        // Redirigir a WhatsApp
-        window.open(`https://wa.me/525538771192?text=${mensajeCodificado}`, '_blank');
-        
-        // Opcional: Guardar en Google Sheets (usa el método que te mostré antes)
-        guardarEnGoogleSheets({ nombre, servicio, detalles, fecha, telefono });
-        
-        // Opcional: Resetear el formulario
-        formulario.reset();
-    });
-    
-    // Función para guardar en Google Sheets (opcional)
-    function guardarEnGoogleSheets(datos) {
-        // Reemplaza con tu URL de Apps Script
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwz-GXI8oRH1FKD5DKjTxwEHf6LcPNZ_K5RYFAtZ0YvOJ580m41O9CPKBpNyGgDAHoC/exec';
-        
-        fetch(scriptUrl, {
-            method: 'POST',
-            body: JSON.stringify(datos),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => console.log('Datos guardados:', data))
-        .catch(error => console.error('Error:', error));
-    }
 });

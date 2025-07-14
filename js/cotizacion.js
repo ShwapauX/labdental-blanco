@@ -1,52 +1,29 @@
+// Esperamos a que se envíe el formulario con id "formCotizacion"
 document.getElementById("formCotizacion").addEventListener("submit", function (e) {
-  e.preventDefault(); // Previene que la página recargue
+  
+  // Evita que la página se recargue automáticamente al enviar el formulario
+  e.preventDefault();
 
-  // Capturamos valores del formulario
-  const nombre = document.getElementById("nombre").value.trim();
-  const servicio = document.getElementById("servicio").value.trim();
-  const detalles = document.getElementById("detalles").value.trim();
-  const fecha = document.getElementById("fecha").value.trim();
-  const telefono = document.getElementById("telefono").value.trim();
+  // Obtenemos los valores escritos por el usuario en cada campo del formulario
+  const nombre = document.getElementById("nombre").value;         // Nombre completo
+  const servicio = document.getElementById("servicio").value;     // Tipo de servicio elegido
+  const detalles = document.getElementById("detalles").value;     // Descripción de necesidades
+  const fecha = document.getElementById("fecha").value;           // Fecha estimada
+  const telefono = document.getElementById("telefono").value;     // Teléfono de contacto
 
-  // Validamos que todos los campos estén llenos
-  if (!nombre || !servicio || !detalles || !fecha || !telefono) {
-    alert("Por favor completa todos los campos.");
-    return;
-  }
-
-  // Enviamos datos a tu Google Sheet mediante Apps Script
-  fetch("https://script.google.com/macros/s/AKfycbyI1vol0V8ZMwaD2GUde7bXLLv5SpzrqbPoYTR6JmE23tTeJPiVw6MLGt07GigLv3xuYw/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      nombre,
-      servicio,
-      detalles,
-      fecha,
-      telefono
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.status === "OK") {
-      // Si se guardó correctamente en Sheets, enviamos a WhatsApp
-      const mensaje = `Hola, soy ${nombre}. Deseo una cotización para: ${servicio}.
+  // Creamos un mensaje que vamos a enviar por WhatsApp
+  const mensaje = `Hola, soy ${nombre}. Deseo una cotización para: ${servicio}.
 Mis necesidades son: ${detalles}
 Fecha estimada de recolección: ${fecha}
 Mi número de WhatsApp es: ${telefono}`;
 
-      const whatsappURL = `https://wa.me/525538771192?text=${encodeURIComponent(mensaje)}`;
-      window.open(whatsappURL, "_blank"); // Abre WhatsApp
+  // Número de WhatsApp del laboratorio (debes colocar el tuyo, con clave internacional sin "+" ni espacios)
+  const numeroWhatsApp = "525538771192"; // 52 = México
 
-      document.getElementById("formCotizacion").reset(); // Limpia el formulario
-    } else {
-      alert("Ocurrió un error al guardar en Google Sheets.");
-    }
-  })
-  .catch(err => {
-    console.error("Error al enviar:", err);
-    alert("No se pudo enviar tu solicitud. Intenta más tarde.");
-  });
+  // Creamos una URL para abrir WhatsApp con el mensaje precargado
+  const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+  // Abrimos esa URL en una nueva pestaña del navegador
+  window.open(url, "_blank");
 });
+
